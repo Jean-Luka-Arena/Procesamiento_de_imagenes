@@ -1,0 +1,15 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Leiningen
+target/
+
+# Archivos compilados
+*.class
+
+# Logs
+*.log
+
+# Archivos temporales
+.DS_Store
