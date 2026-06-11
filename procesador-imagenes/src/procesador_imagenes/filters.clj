@@ -38,14 +38,34 @@
                                        gris (clamp (int (+ (* 0.299 r) (* 0.587 g) (* 0.114 b))))]
                                       (components->rgb {:a a :r gris :g gris :b gris})))))
 
+(defn brillo [img]
+      (apply-filter-parallel img
+                             (fn [src x y]
+                                 (let [{:keys [a r g b]} (rgb->components (.getRGB src x y))]
+                                      (components->rgb {:a a
+                                                        :r (clamp (+ r 60))
+                                                        :g (clamp (+ g 60))
+                                                        :b (clamp (+ b 60))})))))
+
+(defn saturar [img]
+      (apply-filter-parallel img
+                             (fn [src x y]
+                                 (let [{:keys [a r g b]} (rgb->components (.getRGB src x y))
+                                       gris (int (+ (* 0.299 r) (* 0.587 g) (* 0.114 b)))]
+                                      (components->rgb {:a a
+                                                        :r (clamp (int (+ gris (* 1.8 (- r gris)))))
+                                                        :g (clamp (int (+ gris (* 1.8 (- g gris)))))
+                                                        :b (clamp (int (+ gris (* 1.8 (- b gris)))))})))))
+
 (defn difuminado [img]
       (let [w (.getWidth img)
             h (.getHeight img)]
            (apply-filter-parallel img
                                   (fn [src x y]
                                       (let [vecinos (for [dy [-1 0 1] dx [-1 0 1]
-                                                          :let [nx (clamp (+ x dx)) ny (clamp (+ y dy))]
-                                                          :when (and (< nx w) (< ny h) (>= nx 0) (>= ny 0))]
+                                                          :let [nx (max 0 (min (dec w) (+ x dx)))
+                                                                ny (max 0 (min (dec h) (+ y dy)))]
+                                                          ]
                                                          (rgb->components (.getRGB src nx ny)))
                                             n       (count vecinos)
                                             avg     (fn [k] (clamp (int (/ (reduce + (map k vecinos)) n))))]

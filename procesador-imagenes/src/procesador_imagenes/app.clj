@@ -18,7 +18,9 @@
 (def filtros-disponibles
   {:invertir   {:nombre "Invertir"   :fn filters/invertir}
    :desaturar  {:nombre "Desaturar"  :fn filters/desaturar}
-   :difuminado {:nombre "Difuminado" :fn filters/difuminado}})
+   :difuminado {:nombre "Difuminado" :fn filters/difuminado}
+   :brillo  {:nombre "Brillo"  :fn filters/brillo}
+   :saturar {:nombre "Saturar" :fn filters/saturar}})
 
 (defn nombre-filtro [k]
       (get-in filtros-disponibles [k :nombre] (name k)))
