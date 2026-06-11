@@ -28,3 +28,14 @@ Procesamiento de imagenes
 ## Descripción
 
 Este trabajo práctico consiste en el desarrollo de una aplicación de procesamiento de imágenes utilizando programación funcional en Clojure.
+
+## Instrucciones de ejecución
+
+### Prerequisitos
+- Java 11+
+- Leiningen
+
+### Ejecutar
+```bash
+cd procesador-imagenes
+lein run
