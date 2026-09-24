@@ -12,7 +12,7 @@
 ## Docente y Corrector
 
 - Diego Essaya
-- 
+- Leonel Rolon
 
 ## Integrantes
 
@@ -20,6 +20,10 @@
 - padron: 112757
 - Sebastian Velarde
 - padron: 113749
+
+## Videos
+- https://youtu.be/V-uN2h1Fcps
+- https://www.youtube.com/watch?v=zCSx8LzJCP8
 
 ## Nombre del proyecto
 
